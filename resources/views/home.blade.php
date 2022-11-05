@@ -16,4 +16,20 @@
             </div>
         </div>
     </div>
-@stop
+    <div class="containet">
+        <div class="row justify-content-center">
+            <div class="col_md-12">
+                <div class="card">
+                    <div class="card-header">{(__('Dashboard'))}</div>
+                    <div class="card-body">
+                        @if($user->roles_id ==1)
+                            anda login sebagai admin
+                        @else
+                            anda login sebagai user
+                        @endif
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    @stop
