@@ -296,8 +296,16 @@ return [
             'text'         => 'search',
             'topnav_right' => true,
         ],
+        // Book
         [
-            'type'         => 'fullscreen-widget',
+            'text' => 'Buku',
+            'url' => 'admin/books',
+            'icon' => 'fas fa-fw fa-book',
+            'can' => 'isAdmin'
+
+        ],
+        [
+            'type'   => 'fullscreen-widget',
             'topnav_right' => true,
         ],
 
@@ -306,10 +314,12 @@ return [
             'type' => 'sidebar-menu-search',
             'text' => 'search',
         ],
+
+
         [
             'text' => 'blog',
             'url'  => 'admin/blog',
-            'can'  => 'manage-blog',
+            'can'  => 'isUser',
         ],
         [
             'text'        => 'pages',
@@ -317,12 +327,14 @@ return [
             'icon'        => 'far fa-fw fa-file',
             'label'       => 4,
             'label_color' => 'success',
+            'can' => ['isUser', 'isAdmin']
         ],
         ['header' => 'account_settings'],
         [
             'text' => 'profile',
-            'url'  => 'admin/settings',
+            'url'  => 'admin.profile',
             'icon' => 'fas fa-fw fa-user',
+            'can' => 'isAdmin'
         ],
         [
             'text' => 'change_password',
@@ -367,6 +379,12 @@ return [
                 ],
             ],
         ],
+
+        // BOOK
+
+
+
+
         ['header' => 'labels'],
         [
             'text'       => 'important',

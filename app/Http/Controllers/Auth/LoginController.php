@@ -33,8 +33,10 @@ class LoginController extends Controller
             if (auth()->user()->roles_id == 1) {
                 return redirect()->route('admin.home');
             } else {
-                return redirect()->route('login')->with('email', 'Email-address And Password are Wrong!');
+                return redirect()->route('home');
             }
+        } else {
+            return redirect()->route('login')->with('email', 'Email-address And Password are Wrong!');
         }
     }
 }

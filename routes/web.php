@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
@@ -19,8 +20,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 Auth::routes();
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::get('/test', [App\Http\Controllers\HomeController::class, 'test'])->name('test');
+// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+// Route::get('/test', [App\Http\Controllers\HomeController::class, 'test'])->name('test');
 
 // Route::get('/test', function () {
 //     // return $user = Auth::user();
@@ -29,10 +30,10 @@ Route::get('/test', [App\Http\Controllers\HomeController::class, 'test'])->name(
 
 Auth::routes();
 
-Route::get('/home', function () {
-    return view('home');
-})->name('home')->middleware('auth');
+// Route::get('/home', function () {
+//     return view('home');
+// })->name('home')->middleware('auth');
 
 
-Route::get('admin/home', [App\Http\Controllers\HomeController::class, 'index'])
-    ->name('admin.home')->middleware('is_admin');
+Route::get('admin/home', [AdminController::class, 'index'])->name('admin.home')->middleware('is_admin');
+Route::get('home', [HomeController::class, 'index'])->name('home');
