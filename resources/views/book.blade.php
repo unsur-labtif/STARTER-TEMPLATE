@@ -14,9 +14,16 @@
             </div>
 
             <div class="card-body">
+                {{-- tambah data btn --}}
                 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#tambahBukuModal"> <i
                         class="fa fa-plus"></i>
                     Tambah Data</button>
+
+                {{-- fitur Print PDF/Download --}}
+
+                <a href="{{ route('admin.print.books') }}" target="_blank" class="btn btn-secondary"> <i
+                        class="fa fa-print"></i>
+                    Print PDF</a>
 
                 {{-- Modal --}}
                 {{-- For Add Book --}}

@@ -8,6 +8,9 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Validation\ValidationException;
 use Illuminate\Http\Request;
 use App\Models\Book;
+use Barryvdh\DomPDF\Facade\Pdf as FacadePdf;
+use Barryvdh\DomPDF\PDF;
+use Dompdf\Adapter\PDFLib;
 
 class AdminController extends Controller
 {
@@ -139,5 +142,13 @@ class AdminController extends Controller
             'success' => $success,
             'message' => $message,
         ]);
+    }
+
+    public  function print_books()
+    {
+        $books = Book::all();
+
+        $pdf = FacadePdf::loadView('print_books', ['books' => $books]);
+        return $pdf->download('data_buku.pdf');
     }
 }

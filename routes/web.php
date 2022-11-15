@@ -53,3 +53,7 @@ Route::get('admin/ajaxadmin/dataBuku{id}', [AdminController::class, 'getDataBuku
 //delete
 
 Route::post('admin/books/delete/{id}', [AdminController::class, 'delete_book'])->name('admin.book.delete')->middleware('is_admin');
+
+// PDF Concluion
+
+Route::get('admin/print_books', [AdminController::class, 'print_books'])->name('admin.print.books')->middleware('is_admin');
