@@ -122,7 +122,22 @@ class AdminController extends Controller
         return redirect()->route('admin.books')->with($notification);
     }
 
-    public function delete_book()
+    public function delete_book($id)
     {
+
+        $book = Book::find($id);
+
+        Storage::delete('public/cover_buku/' . $book->cover);
+
+        $book->delete();
+
+        $success = true;
+
+        $message = "Book was Deleted";
+
+        return response()->json([
+            'success' => $success,
+            'message' => $message,
+        ]);
     }
 }

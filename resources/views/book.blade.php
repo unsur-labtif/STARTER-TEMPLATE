@@ -117,8 +117,9 @@
                                             data-id="{{ $book->id }}">Edit</button>
                                     </div>
 
-                                    <button type="button" id="btn-delete-buku" class="btn btn-danger" >Delete</button>
-
+                                    <button type="button" id="btn-delete-buku" class="btn btn-danger"
+                                        onclick="deleteConfirmation('{{ $book->id }}', '{{ $book->judul }}')">Delete</button>
+                                    @method('DELETE')
                                     {{-- Modal for Action --}}
                                     {{-- For Edit --}}
                                     <div class="modal fade" id="editBukuModal" tabindex="-1"
@@ -205,6 +206,7 @@
 @section('js')
 
     <script>
+        // for update edit
         $(function() {
             $(document).on('click', '#btn-edit-buku', function() {
                 let id = $(this).data('id');
@@ -235,6 +237,55 @@
                 });
             });
         });
+
+
+        //for delete
+
+        function deleteConfirmation(npm, judul) {
+            swal.fire({
+                title: "Delete",
+                type: 'warning',
+                text: 'R U Sure For Delete This  ' + judul + '?!',
+
+                showCancelButton: !0,
+                confirmButtonText: 'Just Do It',
+                cancelButtonText: 'No Dont !',
+                reverseButton: !0,
+
+
+            }).then(function(e) {
+                    if (e.value === true) {
+                        var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
+
+                        $.ajax({
+                            type: "POST",
+                            url: "books/delete/" + npm,
+                            data: {
+                                _token: CSRF_TOKEN
+                            },
+                            dataType: "JSON",
+                            success: function(results) {
+                                if (results.success === true) {
+                                    swal.fire("Done!", results.message, "Success Bro");
+
+                                    //refresh page after 2sc
+                                    setTimeout(() => {
+                                        location.reload();
+                                    }, 1000);
+                                } else {
+                                    swal.fire(' Something Wrong is it !', result.message, "error");
+                                }
+                            }
+                        });
+                    } else {
+                        e.dismiss;
+                    }
+
+                },
+                function(dismiss) {
+                    return false;
+                })
+        }
     </script>
 
 @endsection
