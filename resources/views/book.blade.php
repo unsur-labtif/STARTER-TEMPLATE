@@ -117,7 +117,7 @@
                                             data-id="{{ $book->id }}">Edit</button>
                                     </div>
 
-                                    <button type="button" id="btn-delete-buku" class="btn btn-danger">Delete</button>
+                                    <button type="button" id="btn-delete-buku" class="btn btn-danger" >Delete</button>
 
                                     {{-- Modal for Action --}}
                                     {{-- For Edit --}}

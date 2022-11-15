@@ -81,7 +81,7 @@ class AdminController extends Controller
 
     public function update_book(Request $req)
     {
-        $buku = Book::find($req->get('id'));
+        $book = Book::find($req->get('id'));
         $validate = $req->validate([
             'judul' => 'required|max:255',
             'penulis' => 'required',
@@ -89,7 +89,7 @@ class AdminController extends Controller
             'penerbit' => 'required'
         ]);
 
-        $book = new Book;
+
 
         $book->judul = $req->get('judul');
         $book->penulis = $req->get('penulis');
@@ -103,6 +103,8 @@ class AdminController extends Controller
                 'public/cover_buku',
                 $filename
             );
+
+            Storage::delete('public/cover_buku/' . $req->get('old_cover'));
             $book->cover = $filename;
         }
 
@@ -118,5 +120,9 @@ class AdminController extends Controller
 
         ];
         return redirect()->route('admin.books')->with($notification);
+    }
+
+    public function delete_book()
+    {
     }
 }

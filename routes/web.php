@@ -49,3 +49,7 @@ Route::patch('admin/home/update', [AdminController::class, 'update_book'])->name
 
 //edit
 Route::get('admin/ajaxadmin/dataBuku{id}', [AdminController::class, 'getDataBuku']);
+
+//delete
+
+Route::post('admin/books/delete{id}', [AdminController::class, 'delete_book'])->name('admin.book.delete')->middleware('is_admin');
