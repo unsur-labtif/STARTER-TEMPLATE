@@ -81,6 +81,7 @@
                 {{-- table --}}
                 <table id="table-data" class="table table-bordered">
                     <thead>
+
                         <tr class="text-center">
                             <th>NO</th>
                             <th>JUDUL</th>
