@@ -19,13 +19,14 @@
                     Tambah Data</button>
 
                 {{-- Modal --}}
+                {{-- For Add Book --}}
                 <div class="modal fade" id="tambahBukuModal" tabindex="-1" aria-labelledby="exampleModalLabel"
                     aria-hidden="true">
                     <div class="modal-dialog">
                         <div class="modal-content">
                             <div class="modal-header">
                                 <h5 class="modal-title" id="exampleModalLabel">Tambah Data Buku</h5>
-                                <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"> <span
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span
                                         aria-hidden="true">&times;</span> </button>
                             </div>
 
@@ -58,15 +59,15 @@
                                     </div>
 
                                     <div class="form-group">
-                                        <label for="cover">Cpver </label>
+                                        <label for="cover">Cover </label>
                                         <input type="file" class="form-control" name="cover" id="cover" />
                                     </div>
-                                </form>
 
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                                 <button type="submit" class="btn btn-primary">Save changes</button>
+                                </form>
                             </div>
                         </div>
                     </div>
@@ -95,7 +96,7 @@
                             $no = 1;
                         @endphp
                         @foreach ($books as $book)
-                            <tr>
+                            <tr class="text-center">
                                 <td>{{ $no++ }}</td>
                                 <td>{{ $book->judul }}</td>
                                 <td>{{ $book->penulis }}</td>
@@ -109,12 +110,94 @@
                                         [gambar tidak tersedia]
                                     @endif
                                 </td>
-                                <td></td>
-                            </tr>
-                        @endforeach
-                    </tbody>
-                </table>
+                                <td>
+                                    <div class="btn-group" role="group" aria-label="Basic example">
+                                        <button type="button" id="btn-edit-buku" class="btn btn-success"
+                                            data-toggle="modal" data-target="#editBukuModal"
+                                            data-id="{{ $book->id }}">Edit</button>
+                                    </div>
+
+                                    <button type="button" id="btn-delete-buku" class="btn btn-danger">Delete</button>
+
+                                    {{-- Modal for Action --}}
+                                    {{-- For Edit --}}
+                                    <div class="modal fade" id="editBukuModal" tabindex="-1"
+                                        aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog modal-lg">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="exampleModalLabel">Edit Book</h5>
+                                                    <button type="button" class="close" data-dismiss="modal"
+                                                        aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+
+                                                <div class="modal-body">
+                                                    <form action="{{ route('admin.book.update') }}" method="post"
+                                                        enctype="multipart/form-data">
+                                                        @csrf
+                                                        @method('PATCH')
+                                                        <div class="row">
+                                                            <div class="col-md-6">
+
+                                                                <div class="form-group">
+                                                                    <label for="edit-judul">Judul </label>
+                                                                    <input type="text" class="form-control"
+                                                                        name="judul" id="edit-judul" required />
+                                                                </div>
+
+                                                                <div class="form-group">
+                                                                    <label for="edit-penulis">Penulis </label>
+                                                                    <input type="text" class="form-control"
+                                                                        name="penulis" id="edit-penulis" required />
+                                                                </div>
+
+                                                                <div class="form-group">
+                                                                    <label for="edit-tahun">Tahun </label>
+                                                                    <input type="year" class="form-control"
+                                                                        name="tahun" id="edit-tahun" required />
+                                                                </div>
+
+                                                                <div class="form-group">
+                                                                    <label for="edit-penerbit">Penerbit </label>
+                                                                    <input type="text" class="form-control"
+                                                                        name="penerbit" id="edit-penerbit" required />
+                                                                </div>
+
+                                                            </div>
+
+                                                            <div class="col-md-6">
+                                                                <div class="form-group" id="image-area"></div>
+                                                                <div class="form-group">
+                                                                    <label for="edit-cover">Cover</label>
+                                                                    <input type="file" class="form-control"
+                                                                        name="cover" id="edit-cover">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                </div>
+
+                                                <div class="modal-footer">
+                                                    <input type="hidden" name="id" id="edit-id">
+                                                    <input type="hidden" name="old_cover" id="edit-old-cover">
+                                                    <button type="button" class="btn btn-secondary"
+                                                        data-dismiss="modal">Close</button>
+                                                    <button type="submit" class="btn btn-primary">Save</button>
+                                                </div>
+                                                </form>
+                                            </div>
+
+                                        </div>
+                                    </div>
             </div>
+
+            </td>
+            </tr>
+            @endforeach
+            </tbody>
+            </table>
         </div>
+    </div>
     </div>
 @endsection

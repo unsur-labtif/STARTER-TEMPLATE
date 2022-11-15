@@ -56,13 +56,18 @@ class AdminController extends Controller
             );
             $book->cover = $filename;
         }
+
         $book->save();
 
-        $notification = array(
-            'massage' => 'Book was Added',
-            'alert-type' => 'success'
+        $notification = [
+            [
 
-        );
+                'massage' => 'Book was Added',
+                'alert-type' => 'success'
+
+            ]
+
+        ];
         return redirect()->route('admin.books')->with($notification);
     }
 }
