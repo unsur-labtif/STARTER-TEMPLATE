@@ -206,7 +206,7 @@
 
     <script>
         $(function() {
-            $(document).on('click', 'btn-edit-buku', function() {
+            $(document).on('click', '#btn-edit-buku', function() {
                 let id = $(this).data('id');
                 $('#image-area').empty();
 
@@ -223,8 +223,10 @@
                         $('#edit-old-cover').val(res.cover);
 
                         if (res.cover !== null) {
-                            $('#image-area').append("<img src='" + baseurl +
-                                "/storage/cover_buku/" + res.cover + ' width ="200px" ');
+                            $('#image-area').append(
+                                "<img src='" + baseurl + "/storage/cover_buku/" + res
+                                .cover + "' width='200px'  />"
+                            );
                         } else {
                             $('#image-area').append('[Image Not Found]');
 

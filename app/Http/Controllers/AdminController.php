@@ -78,4 +78,45 @@ class AdminController extends Controller
 
         return response()->json($buku);
     }
+
+    public function update_book(Request $req)
+    {
+        $buku = Book::find($req->get('id'));
+        $validate = $req->validate([
+            'judul' => 'required|max:255',
+            'penulis' => 'required',
+            'tahun' => 'required',
+            'penerbit' => 'required'
+        ]);
+
+        $book = new Book;
+
+        $book->judul = $req->get('judul');
+        $book->penulis = $req->get('penulis');
+        $book->tahun = $req->get('tahun');
+        $book->penerbit = $req->get('penerbit');
+
+        if ($req->hasFile('cover')) {
+            $extension = $req->file('cover')->extension();
+            $filename = 'cover_buku' . time() . '.' . $extension;
+            $req->file('cover')->storeAs(
+                'public/cover_buku',
+                $filename
+            );
+            $book->cover = $filename;
+        }
+
+        $book->save();
+
+        $notification = [
+            [
+
+                'massage' => 'Book was Change',
+                'alert-type' => 'success'
+
+            ]
+
+        ];
+        return redirect()->route('admin.books')->with($notification);
+    }
 }
