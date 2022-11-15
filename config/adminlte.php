@@ -296,14 +296,7 @@ return [
             'text'         => 'search',
             'topnav_right' => true,
         ],
-        // Book
-        [
-            'text' => 'Buku',
-            'url' => 'admin/books',
-            'icon' => 'fas fa-fw fa-book',
-            'can' => 'isAdmin'
 
-        ],
         [
             'type'   => 'fullscreen-widget',
             'topnav_right' => true,
@@ -381,7 +374,14 @@ return [
         ],
 
         // BOOK
+        // Book
+        [
+            'text' => 'Buku',
+            'url' => 'admin/books',
+            'icon' => 'fas fa-fw fa-book',
+            'can' => 'isAdmin'
 
+        ],
 
 
 
@@ -439,7 +439,7 @@ return [
 
     'plugins' => [
         'Datatables' => [
-            'active' => false,
+            'active' => true,
             'files' => [
                 [
                     'type' => 'js',

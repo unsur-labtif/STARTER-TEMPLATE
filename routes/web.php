@@ -37,3 +37,8 @@ Auth::routes();
 
 Route::get('admin/home', [AdminController::class, 'index'])->name('admin.home')->middleware('is_admin');
 Route::get('home', [HomeController::class, 'index'])->name('home');
+
+Route::get('admin/books', [AdminController::class, 'books'])->name('admin.books')->middleware('is_admin');
+
+//Pengelolaan Buku
+Route::post('admin/books', [AdminController::class, 'submit_book'])->name('admin.book.submit')->middleware('is_admin');
