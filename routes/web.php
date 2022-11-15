@@ -40,5 +40,5 @@ Route::get('home', [HomeController::class, 'index'])->name('home');
 
 Route::get('admin/books', [AdminController::class, 'books'])->name('admin.books')->middleware('is_admin');
 
-//Pengelolaan Buku
+//Pengelolaan Buku update
 Route::post('admin/books', [AdminController::class, 'submit_book'])->name('admin.book.submit')->middleware('is_admin');

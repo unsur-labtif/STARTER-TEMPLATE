@@ -14,17 +14,17 @@
             </div>
 
             <div class="card-body">
-                <button type="button" class="btn btn-primary" data-toogle="modal" data-target="#tambahBukuModal"> <i
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#tambahBukuModal"> <i
                         class="fa fa-plus"></i>
                     Tambah Data</button>
 
                 {{-- Modal --}}
-                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                <div class="modal fade" id="tambahBukuModal" tabindex="-1" aria-labelledby="exampleModalLabel"
                     aria-hidden="true">
                     <div class="modal-dialog">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h5 class="modal-title fs-5" id="exampleModalLabel">Tambah Data Buku</h5>
+                                <h5 class="modal-title" id="exampleModalLabel">Tambah Data Buku</h5>
                                 <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"> <span
                                         aria-hidden="true">&times;</span> </button>
                             </div>
@@ -32,7 +32,7 @@
 
                             <div class="modal-body">
 
-                                <form action="{{ route('admin.book.submit') }}" method="POST"
+                                <form method="post" action="{{ route('admin.book.submit') }}"
                                     enctype="multipart/form-data">
                                     @csrf
 
@@ -42,10 +42,25 @@
 
                                     </div>
                                     <div class="form-group">
-                                        <label for="penulis">Judul </label>
+                                        <label for="penulis">Penulis </label>
                                         <input type="text" class="form-control" name="penulis" id="penulis" required />
                                     </div>
 
+                                    <div class="form-group">
+                                        <label for="tahun">Tahun </label>
+                                        <input type="year" class="form-control" name="tahun" id="tahun" required />
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="penerbit">Penerbit </label>
+                                        <input type="text" class="form-control" name="penerbit" id="penerbit"
+                                            required />
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="cover">Cpver </label>
+                                        <input type="file" class="form-control" name="cover" id="cover" />
+                                    </div>
                                 </form>
 
                             </div>
@@ -56,10 +71,11 @@
                         </div>
                     </div>
                 </div>
+
                 <hr>
 
 
-
+                {{-- End Modal --}}
 
                 {{-- table --}}
                 <table id="table-data" class="table table-bordered">
