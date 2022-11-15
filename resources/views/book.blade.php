@@ -201,3 +201,38 @@
     </div>
     </div>
 @endsection
+
+@section('js')
+
+    <script>
+        $(function() {
+            $(document).on('click', 'btn-edit-buku', function() {
+                let id = $(this).data('id');
+                $('#image-area').empty();
+
+                $.ajax({
+                    type: "get",
+                    url: "{{ url('/admin/ajaxadmin/dataBuku') }}" + id,
+                    dataType: "json",
+                    success: function(res) {
+                        $('#edit-judul').val(res.judul);
+                        $('#edit-penerbit').val(res.penerbit);
+                        $('#edit-penulis').val(res.penulis);
+                        $('#edit-tahun').val(res.tahun);
+                        $('#edit-id').val(res.id);
+                        $('#edit-old-cover').val(res.cover);
+
+                        if (res.cover !== null) {
+                            $('#image-area').append("<img src='" + baseurl +
+                                "/storage/cover_buku/" + res.cover + ' width ="200px" ');
+                        } else {
+                            $('#image-area').append('[Image Not Found]');
+
+                        }
+                    },
+                });
+            });
+        });
+    </script>
+
+@endsection

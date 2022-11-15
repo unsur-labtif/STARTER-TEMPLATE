@@ -70,4 +70,12 @@ class AdminController extends Controller
         ];
         return redirect()->route('admin.books')->with($notification);
     }
+
+    //Ajax Process
+    public function getDataBuku($id)
+    {
+        $buku = Book::find($id);
+
+        return response()->json($buku);
+    }
 }

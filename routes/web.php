@@ -46,3 +46,6 @@ Route::post('admin/books', [AdminController::class, 'submit_book'])->name('admin
 
 //update
 Route::patch('admin/home/update', [AdminController::class, 'update_book'])->name('admin.book.update')->middleware('is_admin');
+
+//edit
+Route::get('admin/ajaxadmin/dataBuku{id}', [AdminController::class, 'getDataBuku']);
