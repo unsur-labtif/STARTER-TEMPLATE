@@ -9,7 +9,7 @@ use Illuminate\Validation\ValidationException;
 use Illuminate\Http\Request;
 use App\Models\Book;
 use Barryvdh\DomPDF\Facade\Pdf;
-use App\Exports\BookExport;
+use App\Exports\BooksExport;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Imports\BooksImport;
 
@@ -163,7 +163,7 @@ class AdminController extends Controller
 
     public function export()
     {
-        return Excel::download(new BookExport, 'books.xlsx');
+        return Excel::download(new BooksExport, 'books.xlsx');
     }
 
     //Import Data Excel

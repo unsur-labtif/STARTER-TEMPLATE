@@ -110,7 +110,7 @@
                             </div>
 
                             <div class="modal-body">
-                                <form action="{{ route('admin.book.import') }}" method="post"
+                                <form method="post" action="{{ route('admin.book.import') }}"
                                     enctype="multipart/form-data">
                                     @csrf
                                     <div class="form-group">
