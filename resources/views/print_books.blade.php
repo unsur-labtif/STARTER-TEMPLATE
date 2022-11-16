@@ -8,7 +8,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
 
-    <title>Information Book</title>
+    <title>Print Book</title>
 </head>
 
 
@@ -27,7 +27,7 @@
                 <th>TAHUN</th>
                 <th>PENERBIT</th>
                 <th>COVER</th>
-                <th>AKSI</th>
+
             </tr>
         </thead>
         <tbody>
@@ -43,7 +43,7 @@
                     <td>{{ $book->penerbit }}</td>
                     <td>
                         @if ($book->cover !== null)
-                            <img src="{{ asset('storage/cover_buku/' . $book->cover) }}" alt="" width="100px">
+                            <img src="{{ public_path('storage/cover_buku/' . $book->cover) }}" width="80px">
                         @else
                             [gambar tidak tersedia]
                         @endif
