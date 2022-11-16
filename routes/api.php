@@ -25,6 +25,9 @@ Route::middleware('auth:sanctum')->group(function () {
 
     //Change Book
     Route::post('/book/update/{id}', [BookController::class, 'update']);
+
+    //Delete Book
+    Route::post('/book/delete/{id}', [BookController::class, 'delete']);
 });
 
 Route::post('/login', [AuthController::class, 'login']);
