@@ -17,8 +17,14 @@ use App\Http\Controllers\API\BookController;
 */
 
 Route::middleware('auth:sanctum')->group(function () {
+    //Information Book
     Route::get('/books', [BookController::class, 'books']);
+
+    //Add Books
     Route::post('/book/create', [BookController::class, 'create']);
+
+    //Change Book
+    Route::post('/book/update/{id}', [BookController::class, 'update']);
 });
 
 Route::post('/login', [AuthController::class, 'login']);
