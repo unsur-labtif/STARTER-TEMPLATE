@@ -168,7 +168,7 @@ class AdminController extends Controller
 
     //Import Data Excel
 
-    public function import(Request $req)
+    public function imports(Request $req)
     {
 
         Excel::import(new BooksImport, $req->file('file'));

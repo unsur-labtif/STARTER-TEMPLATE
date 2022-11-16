@@ -66,4 +66,4 @@ Route::get('admin/books/export', [AdminController::class, 'export'])->name('admi
 
 // Import Excel
 
-Route::post('admin/books/import', [AdminController::class, 'import'])->name('admin.book.import')->middleware('is_admin');
+Route::post('admin/books/import', [AdminController::class, 'imports'])->name('admin.book.import')->middleware('is_admin');
