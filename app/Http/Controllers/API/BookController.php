@@ -41,7 +41,7 @@ class BookController extends Controller
         if ($request->hasFile('cover')) {
             $extension = $request->file('cover')->extension();
 
-            $filename = 'cover_buku_' . time() . '.' . $extension();
+            $filename = 'cover_buku_' . time() . '.' . $extension;
             $request->file('cover')->storeAs('public/cover_buku', $filename);
             $validate['cover'] = $filename;
         }
@@ -54,9 +54,9 @@ class BookController extends Controller
         ], 200);
     }
 
-    public function update(Request $request, $id)
+    public function update(Request $req, $id)
     {
-        $validate = $request->validate([
+        $validate = $req->validate([
             'judul' => 'required|max:255',
             'penulis' => 'required',
             'tahun' => 'required',
@@ -64,11 +64,11 @@ class BookController extends Controller
             'cover' => 'image|file|max:2048'
         ]);
 
-        if ($request->hasFile('cover')) {
-            $extension = $request->file('cover')->extension();
+        if ($req->hasFile('cover')) {
+            $extension = $req->file('cover')->extension();
 
-            $filename = 'cover_buku_' . time() . '.' . $extension();
-            $request->file('cover')->storeAs('public/cover_buku', $filename);
+            $filename = 'cover_buku_' . time() . '.' . $extension;
+            $req->file('cover')->storeAs('public/cover_buku', $filename);
             $validate['cover'] = $filename;
         }
 
