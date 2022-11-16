@@ -83,4 +83,16 @@ class BookController extends Controller
             'book' => $book,
         ], 200);
     }
+
+    public function delete($id)
+    {
+        $book = Book::find($id);
+
+        Storage::delete('public/cover_buku' . $book->cover);
+
+        $book->delete();
+        return response()->json([
+            'message' => 'Books was deleted',
+        ], 200);
+    }
 }
