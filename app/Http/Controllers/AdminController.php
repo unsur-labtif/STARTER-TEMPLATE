@@ -9,6 +9,10 @@ use Illuminate\Validation\ValidationException;
 use Illuminate\Http\Request;
 use App\Models\Book;
 use Barryvdh\DomPDF\Facade\Pdf;
+use App\Exports\BookExport;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Imports\BooksImport;
+
 
 class AdminController extends Controller
 {
@@ -142,6 +146,7 @@ class AdminController extends Controller
         ]);
     }
 
+    //PDF Download
     public  function print_books()
     {
         $books = Book::all();
@@ -152,5 +157,32 @@ class AdminController extends Controller
             'books' => $books
         ]);
         return $pdf->download('data_buku.pdf');
+    }
+
+    //Export to Excel
+
+    public function export()
+    {
+        return Excel::download(new BookExport, 'books.xlsx');
+    }
+
+    //Import Data Excel
+
+    public function import(Request $req)
+    {
+
+        Excel::import(new BooksImport, $req->file('file'));
+
+        $notification = [
+
+            [
+
+                'message' => 'Import Data it Work!',
+                'alert-type' => 'success'
+            ]
+
+        ];
+
+        return redirect()->route('admin.books')->with($notification);
     }
 }

@@ -57,3 +57,12 @@ Route::post('admin/books/delete/{id}', [AdminController::class, 'delete_book'])-
 // PDF Concluion
 
 Route::get('admin/print_books', [AdminController::class, 'print_books'])->name('admin.print.books')->middleware('is_admin');
+
+// Excel
+
+//Export Excel
+Route::get('admin/books/export', [AdminController::class, 'export'])->name('admin.book.export')->middleware('is_admin');
+
+// Import Excel
+
+Route::post('admin/books/import', [AdminController::class, 'import'])->name('admin.book.import')->middleware('is_admin');
