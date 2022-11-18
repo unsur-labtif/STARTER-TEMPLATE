@@ -2,7 +2,8 @@
 
 namespace Database\Seeders;
 
-use\App\Models\Role;
+use App\Models\Roles;
+use App\Models\User;
 
 use Illuminate\Database\Seeder;
 
@@ -18,14 +19,12 @@ class CreateUserSeeder extends Seeder
         $user = [
             [
                 'name' =>'isUser',
-                'username' =>'isUser',
                 'email' =>'user@email.com',
                 'password'=> bcrypt('12345'),
                 'roles_id' =>2,
             ],
             [
                 'name' =>'isAdmin',
-                'username' =>'isAdmin',
                 'email' =>'Admin@mail.com',
                 'password' =>bcrypt('12345'),
                 'roles_id' =>'1',
