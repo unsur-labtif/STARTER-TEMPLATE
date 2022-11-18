@@ -11,10 +11,11 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-body">
-                    @if($user->roles_id == 1)
+                    @if(auth()->user()->roles_id == 1)
                         Anda login sebagai Admin
                     @else
                         Anda login sebagai User
+                    @endif
                 </div>
             </div>
         </div>
