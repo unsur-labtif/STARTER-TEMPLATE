@@ -30,3 +30,9 @@ Route::get('/home', function() {
     return view('home');
 })->name('home')->middleware('auth');
 Route::get('admin/home', [App\Http\Controllers\AdminController::class,'index']);
+
+Auth::routes();
+
+Route::get('/home', function() {
+    return view('home');
+})->name('home')->middleware('auth');

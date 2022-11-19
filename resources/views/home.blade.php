@@ -11,11 +11,7 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-body">
-                    @if(auth()->user()->roles_id == 1)
-                        Anda login sebagai Admin
-                    @else
-                        Anda login sebagai User
-                    @endif
+                    <p class="mb-0">You are logged in!</p>
                 </div>
             </div>
         </div>
