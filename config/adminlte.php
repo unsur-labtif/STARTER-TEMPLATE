@@ -306,6 +306,13 @@ return [
             'type' => 'sidebar-menu-search',
             'text' => 'search',
         ],
+        //sidebar tambahan di modul menu
+        [
+            'text' => 'Buku',
+            'url'  => 'admin/books',
+            'icon' => 'fas fa-fw fa-book',
+            'can' => 'isAdmin',
+        ],
         [
             'text' => 'blog',
             'url'  => 'admin/blog',
@@ -421,7 +428,7 @@ return [
 
     'plugins' => [
         'Datatables' => [
-            'active' => false,
+            'active' => true,
             'files' => [
                 [
                     'type' => 'js',
@@ -466,7 +473,7 @@ return [
             ],
         ],
         'Sweetalert2' => [
-            'active' => false,
+            'active' => true,
             'files' => [
                 [
                     'type' => 'js',

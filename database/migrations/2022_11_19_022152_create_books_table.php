@@ -15,6 +15,11 @@ class CreateBooksTable extends Migration
     {
         Schema::create('books', function (Blueprint $table) {
             $table->id();
+            $table->string('judul')->unique();
+            $table->string('penulis');
+            $table->year('tahun');
+            $table->string('penerbit');
+            $table->string('cover')->nullable();
             $table->timestamps();
         });
     }
