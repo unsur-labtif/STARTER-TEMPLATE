@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Validation\ValidationException;
 use App\Models\Book;
+use PDF;
 use Maatwebsite\Excel\Facades\Excel;
 
 
@@ -139,5 +140,12 @@ class AdminController extends Controller
             'success' => $success,
             'message' => $message,
         ]);
+    }
+    //print pdf
+    public function print_books()
+    {
+        $books = Book::all();
+        $pdf = PDF::loadview('print_books',['books'=> $books]);
+        return $pdf->download('data_book.pdf');
     }
 }

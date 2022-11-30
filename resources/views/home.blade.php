@@ -7,15 +7,6 @@
 @stop
 
 @section('content')
-    {{-- <div class="row">
-        <div class="col-12">
-            <div class="card">
-                <div class="card-body">
-                    <p class="mb-0">welcome</p>
-                </div>
-            </div>
-        </div>
-    </div> --}}
     <div class="container">
 
         <div class="row justify-content-center">
