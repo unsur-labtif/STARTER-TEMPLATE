@@ -4,8 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Storage;
-use Illuminate\Validation\ValidationException;
+use App\User;
 
 class HomeController extends Controller
 {
@@ -28,5 +27,6 @@ class HomeController extends Controller
     {
         $user = Auth::user();
         return view('home', compact('user'));
+        // return view('home', ['user' => $user]);
     }
 }

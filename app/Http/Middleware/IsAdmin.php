@@ -19,7 +19,6 @@ class IsAdmin
         if(auth()->user()->roles_id == 1){
             return $next($request);
         }
-        return redirect('home')->with('error','anda tidak bisa memilki akses sebagai admin');
-        return $next($request);
+        return redirect('home')->with('error', 'anda tidak memiliki akses sebagai admin');
     }
 }

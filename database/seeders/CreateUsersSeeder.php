@@ -2,12 +2,10 @@
 
 namespace Database\Seeders;
 
-use App\Models\Roles;
+use Illuminate\Database\Seeder;
 use App\Models\User;
 
-use Illuminate\Database\Seeder;
-
-class CreateUserSeeder extends Seeder
+class CreateUsersSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -19,20 +17,22 @@ class CreateUserSeeder extends Seeder
         $user = [
             [
                 'name' =>'isUser',
-                'email' =>'user@email.com',
-                'password'=> bcrypt('12345'),
-                'roles_id' =>2,
+                'username' =>'isUser',
+                'email' =>'user@mail.com',
+                'password' =>bcrypt('12345'),
+                'roles_id' =>2
             ],
             [
                 'name' =>'isAdmin',
-                'email' =>'Admin@mail.com',
+                'username' =>'isAdmin',
+                'email' =>'admin@mail.com',
                 'password' =>bcrypt('12345'),
-                'roles_id' =>'1',
-
+                'roles_id' =>1
             ]
             ];
+            
             foreach ($user as $key => $value){
-                user::create($value);
+                User::create($value);
             }
     }
 }

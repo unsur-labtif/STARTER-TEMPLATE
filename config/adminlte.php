@@ -320,11 +320,6 @@ return [
         ],
         ['header' => 'account_settings'],
         [
-            'text' => 'Book',
-            'url'  => 'admin/book',
-            'icon' => 'fas fa-fw fa-book',
-        ],
-        [
             'text' => 'profile',
             'url'  => 'admin/settings',
             'icon' => 'fas fa-fw fa-user',
