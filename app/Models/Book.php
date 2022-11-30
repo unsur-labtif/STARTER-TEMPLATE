@@ -14,7 +14,6 @@ class Book extends Model
         'penulis',
         'tahun',
         'penerbit',
-        'cover'
     ];
 
     public static function getDataBooks()

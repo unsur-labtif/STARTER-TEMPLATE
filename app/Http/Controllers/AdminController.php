@@ -9,6 +9,8 @@ use Illuminate\Validation\ValidationException;
 use App\Models\Book;
 use PDF;
 use Maatwebsite\Excel\Facades\Excel;
+use App\Exports\BooksExport;
+use App\Imports\BooksImport;
 
 
 
@@ -147,5 +149,21 @@ class AdminController extends Controller
         $books = Book::all();
         $pdf = PDF::loadview('print_books',['books'=> $books]);
         return $pdf->download('data_book.pdf');
+    }
+    //perintah mengunduh file excel
+    public function export()
+    {
+        return Excel::download(new BooksExport, 'books_data.xlsx');
+    }
+    //import data
+    public function import(Request $req)
+    {
+        Excel::import(new BooksImport, $req->file('file'));
+        $notification = array(
+            'message' => 'Import data berhasil dlakukan',
+            'alert-type' => 'success'
+        );
+
+        return redirect()->route('admin.books')->with($notification);
     }
 }
