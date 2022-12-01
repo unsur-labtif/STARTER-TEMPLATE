@@ -119,6 +119,8 @@
             </div> 
             <div class="modal-body"> 
                 <form method="post" action="{{ route('admin.book.update') }}" enctype="multipart/form-data"> 
+                    @csrf
+                    @method ('PATCH')
                     <div class="row"> 
                         <div class="col-md-6"> 
                             <div class="form-group"> 

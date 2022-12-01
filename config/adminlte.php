@@ -297,6 +297,12 @@ return [
             'topnav_right' => true,
         ],
         [
+            'text'         => 'Buku',
+            'url'         => 'admin/books',
+            'icon' => 'fas fa-fw fa-book',
+            'can' => 'isAdmin',
+        ],
+        [
             'type'         => 'fullscreen-widget',
             'topnav_right' => true,
         ],
