@@ -120,10 +120,44 @@
 
         switch (type) {
             case 'info';
-            Toast.fire({type: 'info', title: "{{ Session::get('message') 
-            })
+                Toast.fire({type: 'info', title: "{{ Session::get('message') }}"
+                })
+            break;
+
+            case 'success';
+                Toast.fire({type: 'success', title: "{{ Session::get('message') }}"
+                })
+            break;
+
+            case 'warning';
+                Toast.fire({type: 'warning', title: "{{ Session::get('message') }}"
+                })
+            break;
+
+            case 'error';
+                Toast.fire({type: 'error', title: "{{ Session::get('message') }}"
+                })
+            break;
+
+            case 'dialog_error';
+                Swal.fire({type: 'error', title: "Ooooops", text:"{{ Session::get('message') }}", timer: 3000
+                })
             break;
         }
+        @endif
+
+        @if ($errors->any())
+            @foreach ($errors->all() as $error)
+            Swal.fire({typr: 'error', title: 'Ooops', text: "Terjadi suatu kesalahan "
+            })
+            @endforeach
+        @endif
+
+        $('#Table-data').DataTable();
+
+        let baseurl = "<?=url('/')?>";
+        let fullURL = "<?=url->full()?>";
+
         </script>
 
 </body>
