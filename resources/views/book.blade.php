@@ -83,7 +83,8 @@
 
                                     <div class="form-group">
                                         <label for="cover">Cover </label>
-                                        <input type="file" class="form-control" name="cover" id="cover" />
+                                        <input type="file" accept=".jpg,.jpeg,.bmp,.png" class="form-control"
+                                            name="cover" id="cover" />
                                     </div>
 
                             </div>
@@ -138,7 +139,7 @@
                 {{-- End Modal --}}
 
                 {{-- table --}}
-                <table id="table-data" class="table table-bordered">
+                <table id="table-data" class="table table-striped">
                     <thead>
 
                         <tr class="text-center">

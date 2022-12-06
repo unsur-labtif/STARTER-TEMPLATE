@@ -42,7 +42,8 @@ class AdminController extends Controller
             'judul' => 'required|max:255',
             'penulis' => 'required',
             'tahun' => 'required',
-            'penerbit' => 'required'
+            'penerbit' => 'required',
+            'cover' => 'file|mimes:jpg,jpeg,png,bmp|max2048,'
         ]);
 
         $book = new Book;
@@ -66,7 +67,6 @@ class AdminController extends Controller
 
         $notification = [
             [
-
                 'massage' => 'Book was Added',
                 'alert-type' => 'success'
 
@@ -91,7 +91,9 @@ class AdminController extends Controller
             'judul' => 'required|max:255',
             'penulis' => 'required',
             'tahun' => 'required',
-            'penerbit' => 'required'
+            'penerbit' => 'required',
+            'cover' => 'file|mimes:jpg,jpeg,png,bmp|max2048,'
+
         ]);
 
 
@@ -117,7 +119,6 @@ class AdminController extends Controller
 
         $notification = [
             [
-
                 'massage' => 'Book was Change',
                 'alert-type' => 'success'
 
@@ -147,11 +148,11 @@ class AdminController extends Controller
     }
 
     //PDF Download
-    public  function print_books()
+    public function print_books()
     {
         $books = Book::all();
 
-
+        view()->share('print_books', $books);
 
         $pdf = Pdf::loadview('print_books', [
             'books' => $books
@@ -174,9 +175,7 @@ class AdminController extends Controller
         Excel::import(new BooksImport, $req->file('file'));
 
         $notification = [
-
             [
-
                 'message' => 'Import Data it Work!',
                 'alert-type' => 'success'
             ]

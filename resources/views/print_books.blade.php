@@ -17,7 +17,7 @@
     <h1 class="text-center"> Data Book</h1>
     <p class="text-center">Reporting Book Years 2022</p>
     <br>
-    <table id="table-data" class="table table-active">
+    <table id="table-data" class="table table-active" >
         <thead>
 
             <tr class="text-center">
