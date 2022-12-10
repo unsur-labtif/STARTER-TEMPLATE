@@ -32,9 +32,16 @@ Route::get('/test', function (){
     return "hello";
 })->middleware ('auth');
 
+Route::get('admin/books', [App\Http\Controllers\AdminController::class, 'books'])
+    ->name('admin.book')
+    ->middleware('is_admin');
+Route::post('admin/book', [App\Http\Controllers\AdminController::class, 'submit_book'])
+->name('admin.book.submit')
+->middleware('is_admin');
 Route::get('admin/home', [App\Http\Controllers\AdminController::class, 'index'])
         ->name('admin.home')
         ->middleware('is_admin');
 Route::get('home', [App\Http\Controllers\HomeController::class, 'index'])
         ->name('home')
         ->middleware('auth');
+
