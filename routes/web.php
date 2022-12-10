@@ -32,15 +32,17 @@ Route::get('/test', function (){
     return "hello";
 })->middleware ('auth');
 
-Route::get('admin/books', [App\Http\Controllers\AdminController::class, 'books'])
-    ->name('admin.book')
-    ->middleware('is_admin');
-Route::post('admin/book', [App\Http\Controllers\AdminController::class, 'submit_book'])
-->name('admin.book.submit')
-->middleware('is_admin');
-Route::get('admin/home', [App\Http\Controllers\AdminController::class, 'index'])
-        ->name('admin.home')
-        ->middleware('is_admin');
+Route::middleware('is_admin')->group(function () {
+    Route::prefix('admin')->group(function () {
+        Route::get('home', [App\Http\Controllers\AdminController::class, 'index']);
+        Route::get('books', [App\Http\Controllers\AdminController::class, 'books']);
+        Route::post('book', [App\Http\Controllers\AdminController::class, 'submit_book'])->name("admin.book.submit");
+        Route::patch('book/update', [App\Http\Controllers\AdminController::class, 'update_book'])->name("admin.book.update");
+        Route::get('ajaxadmin/dataBuku/{id}', [App\Http\Controllers\AdminController::class, 'getDataBuku']);
+        Route::post('book/delete/{id}', [App\Http\Controllers\AdminController::class, 'delete_book']);
+    });
+});
+
 Route::get('home', [App\Http\Controllers\HomeController::class, 'index'])
         ->name('home')
         ->middleware('auth');
