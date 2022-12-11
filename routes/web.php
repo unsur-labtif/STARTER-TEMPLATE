@@ -35,11 +35,11 @@ Route::get('/test', function (){
 Route::middleware('is_admin')->group(function () {
     Route::prefix('admin')->group(function () {
         Route::get('home', [App\Http\Controllers\AdminController::class, 'index']);
-        Route::get('books', [App\Http\Controllers\AdminController::class, 'books']);
+        Route::get('books', [App\Http\Controllers\AdminController::class, 'books'])->name('admin.books');
         Route::post('book', [App\Http\Controllers\AdminController::class, 'submit_book'])->name("admin.book.submit");
         Route::patch('book/update', [App\Http\Controllers\AdminController::class, 'update_book'])->name("admin.book.update");
         Route::get('ajaxadmin/dataBuku/{id}', [App\Http\Controllers\AdminController::class, 'getDataBuku']);
-        Route::post('book/delete/{id}', [App\Http\Controllers\AdminController::class, 'delete_book']);
+        Route::post('books/delete/{id}', [App\Http\Controllers\AdminController::class, 'delete_book']);
     });
 });
 

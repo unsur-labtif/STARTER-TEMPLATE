@@ -290,13 +290,6 @@ return [
     */
 
     'menu' => [
-        //Data menu
-        [
-            'text' => 'Buku',
-            'url' => 'admin/books',
-            'icon' => 'fas fa-fw fa-book',
-            'can' => 'isAdmin',
-        ],
         // Navbar items:
         [
             'type'         => 'navbar-search',
@@ -318,18 +311,13 @@ return [
             'url'  => 'admin/blog',
             'can'  => 'manage-blog',
         ],
-        [
-            'text'        => 'pages',
-            'url'         => 'admin/pages',
-            'icon'        => 'far fa-fw fa-file',
-            'label'       => 4,
-            'label_color' => 'success',
-        ],
         ['header' => 'account_settings'],
+        //Data menu
         [
-            'text' => 'Book',
-            'url'  => 'admin/book',
+            'text' => 'Buku',
+            'url' => 'admin/books',
             'icon' => 'fas fa-fw fa-book',
+            'can' => 'isAdmin',
         ],
         [
             'text' => 'profile',
@@ -378,22 +366,6 @@ return [
                     'url'  => '#',
                 ],
             ],
-        ],
-        ['header' => 'labels'],
-        [
-            'text'       => 'important',
-            'icon_color' => 'red',
-            'url'        => '#',
-        ],
-        [
-            'text'       => 'warning',
-            'icon_color' => 'yellow',
-            'url'        => '#',
-        ],
-        [
-            'text'       => 'information',
-            'icon_color' => 'cyan',
-            'url'        => '#',
         ],
     ],
 
