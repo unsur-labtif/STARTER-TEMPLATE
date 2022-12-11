@@ -49,7 +49,7 @@ class AdminController extends Controller
             'message' => 'Data buku berhasiil ditambahkan','alert-type' => 'success'
         );
 
-        return redirect()->route('admin.book')->with($notification);
+        return redirect()->route('admin.books')->with($notification);
      }
 
      //ajax process
