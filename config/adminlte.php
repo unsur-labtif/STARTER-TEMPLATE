@@ -302,27 +302,35 @@ return [
         ],
 
         // Sidebar items:
-        [
-            'type' => 'sidebar-menu-search',
-            'text' => 'search',
-        ],
-        [
-            'text' => 'blog',
-            'url'  => 'admin/blog',
-            'can'  => 'manage-blog',
-        ],
-        [
-            'text'        => 'pages',
-            'url'         => 'admin/pages',
-            'icon'        => 'far fa-fw fa-file',
-            'label'       => 4,
-            'label_color' => 'success',
-        ],
+        // [
+        //     'type' => 'sidebar-menu-search',
+        //     'text' => 'search',
+        // ],
+        // [
+        //     'text' => 'blog',
+        //     'url'  => 'admin/blog',
+        //     'can'  => 'manage-blog',
+        // ],
         [
             'text' => 'Buku',
-            'url'  => 'admin/Buku',
+            'url'  => 'admin/books',
             'icon' => 'fas fa-fw fa-book',
             'can'  => 'isAdmin',
+        ],
+        [
+            'text'        => 'Anggota',
+            'url'         => 'admin/anggota',
+            'icon'        => 'fas fa-solid fa-graduation-cap',
+        ],
+        [
+            'text'        => 'Transaksi',
+            'url'         => 'admin/transaksi',
+            'icon'        => 'fas fa-solid fa-cash-register',
+        ],
+        [
+            'text'        => 'Laporan',
+            'url'         => 'admin/laporan',
+            'icon'        => 'fas fa-solid fa-chart-line',
         ],
         ['header' => 'account_settings'],
         [
@@ -427,7 +435,7 @@ return [
 
     'plugins' => [
         'Datatables' => [
-            'active' => false,
+            'active' => true,
             'files' => [
                 [
                     'type' => 'js',

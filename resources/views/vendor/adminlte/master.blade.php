@@ -74,6 +74,7 @@
         <meta name="msapplication-TileImage" content="{{ asset('favicon/ms-icon-144x144.png') }}">
     @endif
 
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 
 <body class="@yield('classes_body')" @yield('body_data')>
@@ -116,34 +117,34 @@
         })
 
         @if(Session::has('message'))
-            var type = "{{Session::get('alert-type)}}";
+            var type = "{{ Session::get('alert-type') }}";
 
             switch (type) {
                 case 'info':
                     Toast.fire({
                         type: 'info',
-                        tittle:"{{Session::get('message') }}"
+                        title:"{{Session::get('message') }}"
                 })
                 break;
-                case 'success';
+                case 'success':
                 Toast.fire({
                     type: 'success',
                     title: "{{Session::get('message') }}"
                 })
                 break;
-                case 'warning';
+                case 'warning':
                 Toast.fire({
                     type: 'warning',
                     title: "{{Session::get('message') }}"
                 })
                 break;
-                case 'error';
+                case 'error':
                 Toast.fire({
                     type: 'error',
                     title: "{{Session::get('message') }}"
                 })
                 break;
-                case 'dialog_error';
+                case 'dialog_error':
                 Toast.fire({
                     type: 'error',
                     title: "Ooops"
@@ -176,7 +177,7 @@
 
         let baseurl = "<?=url('/')?>";
         let fullURL = "<?=url()->full()?>";
-    </script> 
+    </script>
 
 </body>
 
