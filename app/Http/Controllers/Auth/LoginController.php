@@ -50,7 +50,7 @@ class LoginController extends Controller
         'password' =>$input['password'])))
         {
             if(auth()->user()->roles_id == 1){
-                return redirect()->route('Admin.home');
+                return redirect()->route('admin.home');
             }else{
                 return redirect()->route('home');
             }
