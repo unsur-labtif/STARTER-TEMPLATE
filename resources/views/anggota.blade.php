@@ -34,7 +34,7 @@
                         <td>{{$anggota->nama}}</td>
                         <td>{{$anggota->tgl_lahir}}</td>
                         <td>{{$anggota->kelas}}</td>
-                        <td>@if($anggota->foto !== null)<img src="{{ asset('storage/cover_buku/'.$anggota->cover) }}" width="100dp"/>
+                        <td>@if($anggota->Foto !== null)<img src="{{ asset('storage/foto_anggota/'.$anggota->Foto) }}" width="100dp"/>
                         @else
                             [gambar tidak tersedia]
                         @endif
@@ -63,7 +63,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form method="post" action="{{ route('admin.book.submit') }}" enctype="multipart/form-data">
+                <form method="post" action="{{ route('admin.anggota.submit') }}" enctype="multipart/form-data">
                 @csrf
                     <div class="form-group">
                         <label for="judul">Nisn</label>

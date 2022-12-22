@@ -31,6 +31,7 @@ Route::get('admin/print_books', [App\Http\Controllers\AdminController::class, 'p
 Route::get('admin/books/export', [App\Http\Controllers\AdminController::class, 'export'])->name('admin.book.export')->middleware('is_admin');
 Route::Post('admin/books/import', [App\Http\Controllers\AdminController::class, 'import'])->name('admin.book.import')->middleware('is_admin');
 Route::get('admin/anggota',[App\Http\Controllers\AdminController::class, 'anggota'])->name('admin.anggota')->middleware('is_admin');
+Route::post('admin/anggota', [App\Http\Controllers\AdminController::class, 'submit_anggota'])->name('admin.anggota.submit')->middleware('is_admin');
 Route::get('admin/transaksi',[App\Http\Controllers\AdminController::class, 'transaksi'])->name('admin.transaksi')->middleware('is_admin');
 Route::get('admin/laporan',[App\Http\Controllers\AdminController::class, 'laporan'])->name('admin.laporan')->middleware('is_admin');
 
