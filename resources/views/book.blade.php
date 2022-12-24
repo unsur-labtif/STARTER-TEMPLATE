@@ -40,13 +40,13 @@
     <script>
         function deleteConfirmation(npm, judul) {
             swal.fire({
-                tittle: "Hapus?",
-                type: 'warninga',
-                text: "Apakah anda yakin ingin menghapus data buku dengan judul" + judul+"?!",
+                title: "Hapus?",
+                type: 'warning',
+                text: "Apakah anda yakin ingin menghapus data buku dengan judul : " + judul+"?!",
 
                 showCancelButton: !0,
-                confirmButtonText: "Ya, lakukan",
-                cancelButtonText: "Tidak, Batalkan",
+                confirmButtonText: "Hapus",
+                cancelButtonText: "Tidak",
                 reverseButtons: !0
             }).then(function (e){
                 if (e.value === true) {

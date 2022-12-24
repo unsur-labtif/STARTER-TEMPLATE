@@ -64,6 +64,68 @@ class AdminController extends Controller
 
         return redirect()->route('admin.anggota') -> with($notification);
     }
+        // AJAX PROCCESS
+    public function getDataAnggota($id)
+    {
+        $anggota = anggota::find($id);
+
+        return response()->json($anggota);
+    }
+    public function update_anggota(Request $req)
+    {
+        $anggota = anggota::find($req->get('id'));
+
+        $validate = $req->validate([
+            'nisn' => 'required|max:255',
+            'nama' => 'required',
+            'tgl_lahir' => 'required',
+            'kelas' => 'required',
+        ]);
+
+        $anggota->nisn = $req->get('nisn');
+        $anggota->nama = $req->get('nama');
+        $anggota->tgl_lahir = $req->get('tgl_lahir');
+        $anggota->kelas = $req->get('kelas');
+
+        if ($req->hasFile('foto'))
+            {
+                $extension = $req->file('foto')->extension();
+                $filename = 'foto_anggota_'.time().'.'.$extension;
+                $req->file('foto')->storeAs(
+                    'public/foto_anggota', $filename
+                );
+
+                Storage::delete('public/foto_anggota/'.$req->get('old_anggota'));
+
+                $anggota->foto = $filename;
+            }
+
+                $anggota->save();
+
+                $notification = array(
+                    'message' => 'Data Anggota berhasil diubah',
+                    'alert-type' => 'success'
+                );
+
+                return redirect()->route('admin.anggota')->with($notification);
+
+    }
+    public function delete_anggota($id)
+    {
+        $anggota = anggota::find($id);
+        Storage::delete('public/foto_anggota/'.$anggota->foto);
+        $anggota->delete();
+
+        $success = true;
+        $message = "Data anggota berhasil dihapus";
+
+        return response()->json([
+            'success' => $success,
+            'message' => $message,
+        ]);
+    }
+
+
     public function transaksi()
     {
         return view('transaksi');
